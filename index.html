@@ -117,12 +117,74 @@ font-size:16px;
 }
 
 }
+  #intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ffb6c1,#ffd6e7,#ffeaf4);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:999;
+text-align:center;
+}
+
+.welcome-text{
+font-family:'Playfair Display',serif;
+font-size:50px;
+color:#ff0066;
+margin-bottom:20px;
+animation:fadeIn 2s ease;
+}
+
+.intro-sub{
+font-size:20px;
+color:#444;
+margin-bottom:40px;
+}
+
+.start-btn{
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff4d88;
+color:white;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.start-btn:hover{
+transform:scale(1.05);
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
 
 </style>
 
 </head>
 
 <body>
+  <div id="intro">
+
+<h1 class="welcome-text">Welcome Sakshi ❤️</h1>
+
+<p class="intro-sub">
+Someone wrote something for you...
+</p>
+
+<button class="start-btn" onclick="startStory()">
+Start Reading
+</button>
+
+  </div>
 
 <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Music</button>
 
@@ -583,6 +645,11 @@ I don’t just like you anymore.<br><br>
 </div>
 
 <script>
+  function startStory(){
+
+document.getElementById("intro").style.display="none";
+
+  }
 
 function createHeart(){
 
