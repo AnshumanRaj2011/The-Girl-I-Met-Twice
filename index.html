@@ -666,7 +666,7 @@ I don’t just like you anymore.<br><br>
 
 <script>
 
-  function startStory(){
+function startStory(){
 
 for(let i=0;i<25;i++){
 
@@ -689,12 +689,7 @@ setTimeout(()=>{
 document.getElementById("intro").style.display="none";
 },900);
 
-  }
-  function startStory(){
-
-document.getElementById("intro").style.display="none";
-
-  }
+}
 
 function createHeart(){
 
@@ -708,7 +703,9 @@ heart.style.animationDuration=(6+Math.random()*6)+"s";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>{heart.remove();},12000);
+setTimeout(()=>{
+heart.remove();
+},12000);
 
 }
 
@@ -722,7 +719,8 @@ function toggleMusic(){
 if(music.paused){
 music.play();
 btn.innerHTML="🔇 Stop Music";
-}else{
+}
+else{
 music.pause();
 btn.innerHTML="🎵 Play Music";
 }
