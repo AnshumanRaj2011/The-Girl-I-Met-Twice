@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>The Girl I Met Twice</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 
+/* smooth scrolling */
+
 html{
 scroll-behavior:smooth;
 }
+
+/* page background */
 
 body{
 margin:0;
@@ -32,54 +38,89 @@ color:#ff4d88;
 font-size:20px;
 animation:floatUp linear infinite;
 opacity:0.7;
+pointer-events:none;
 }
 
 @keyframes floatUp{
+
 0%{
 transform:translateY(0) scale(0.8);
 opacity:0;
 }
+
 50%{
 opacity:1;
 }
+
 100%{
 transform:translateY(-120vh) scale(1.4);
 opacity:0;
 }
+
 }
 
 /* story card */
 
 .container{
+
 max-width:850px;
 background:white;
 margin:40px 20px;
 padding:40px;
 border-radius:18px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
 }
 
+/* title */
+
 h1{
+
 font-family:'Playfair Display',serif;
 text-align:center;
 color:#e6004c;
 font-size:42px;
 margin-bottom:25px;
+
 }
 
+/* story text */
+
 .story{
+
 font-size:18px;
 line-height:1.9;
 color:#333;
+
 }
 
-.story b{
-color:#e6004c;
+/* confession line */
+
+#confession{
+
+text-align:center;
+font-size:34px;
+color:#ff0066;
+margin-top:40px;
+opacity:0;
+transition:all 2s ease;
+
+}
+
+/* glowing reveal */
+
+#confession.show{
+
+opacity:1;
+text-shadow:0 0 20px pink,0 0 40px #ff4da6;
+transform:scale(1.1);
+
 }
 
 /* music button */
 
 .music-btn{
+
 position:fixed;
 top:20px;
 right:20px;
@@ -91,6 +132,7 @@ border-radius:30px;
 font-size:16px;
 cursor:pointer;
 box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
 }
 
 /* mobile */
@@ -110,23 +152,22 @@ font-size:30px;
 font-size:16px;
 }
 
+#confession{
+font-size:26px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Music</button>
 
 <audio id="bgMusic" loop>
-<iframe id="ytMusic"
-width="0"
-height="0"
-src="https://www.youtube.com/embed/BWLYFc9MDFI?enablejsapi=1&loop=1&playlist=BWLYFc9MDFI"
-frameborder="0"
-allow="autoplay">
-</iframe>
+<source src="romantic.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
@@ -145,15 +186,11 @@ We studied together in LKG, UKG, and Class 1. Three entire years in the same cla
 
 Then, in Class 2, around October, I left that school.<br><br>
 
-After leaving, my life went in a completely different direction. I didn’t attend school during Classes 3, 4, and 5. Those years passed without regular schooling. The only class I attended during that time was one online class in Class 4.<br><br>
-
-But those years were not entirely empty.<br><br>
-
-During that time, I learned a lot of mathematics, and slowly I developed a strong interest in computers.<br><br>
+After leaving, my life went in a completely different direction. I didn’t attend school during Classes 3, 4, and 5. Those years passed without regular schooling.<br><br>
 
 Eventually, I returned to my homeland and was admitted to a school again.<br><br>
 
-My first day back at school after three and a half years was not easy. I felt nervous and underconfident. Everything felt unfamiliar again—new classrooms, new classmates, and a completely new environment.<br><br>
+My first day back at school after three and a half years was not easy. I felt nervous and underconfident.<br><br>
 
 But there was someone in that class whom I had actually met years ago.<br><br>
 
@@ -165,20 +202,20 @@ What surprised me the most was that she recognized me immediately, while I could
 
 Days passed, and I kept wondering how she knew me.<br><br>
 
-(Continue pasting the rest of your story here exactly the same way.)
-
-<br><br>
-
-<b>I love you, Sakshi.</b>
+(Continue your full story here exactly the same way...)<br><br>
 
 </div>
+
+<h2 id="confession">I love you, Sakshi.</h2>
+
 </div>
 
 <script>
 
-/* floating hearts generator */
+/* floating hearts */
 
 function createHeart(){
+
 const heart=document.createElement("div");
 heart.classList.add("heart");
 heart.innerHTML="❤";
@@ -190,29 +227,55 @@ heart.style.animationDuration=(6+Math.random()*6)+"s";
 document.body.appendChild(heart);
 
 setTimeout(()=>{
+
 heart.remove();
+
 },12000);
+
 }
 
 setInterval(createHeart,500);
 
 
-/* music toggle */
+/* music button */
 
-const music = document.getElementById("bgMusic");
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
 
 function toggleMusic(){
 
 if(music.paused){
-music.play().catch(err=>{
-console.log("Music blocked:", err);
-});
+
+music.play();
+btn.innerHTML="🔇 Stop Music";
+
 }
 else{
+
 music.pause();
+btn.innerHTML="🎵 Play Music";
+
 }
 
 }
+
+
+/* confession reveal animation */
+
+const confession=document.getElementById("confession");
+
+window.addEventListener("scroll",()=>{
+
+const position=confession.getBoundingClientRect().top;
+const screen=window.innerHeight;
+
+if(position < screen-100){
+
+confession.classList.add("show");
+
+}
+
+});
 
 </script>
 
