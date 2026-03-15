@@ -31,10 +31,12 @@ text-shadow:
 0 0 40px #ff80bf;
 }
   /* final text */
-
 #loveText{
 position:absolute;
-font-size:70px;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0.8);
+font-size:60px;
 color:#ff4da6;
 font-style:italic;
 text-shadow:
@@ -43,14 +45,15 @@ text-shadow:
 0 0 40px #ff66cc,
 0 0 60px #ff99dd;
 opacity:0;
-transform:scale(0.8);
 transition:2s;
 z-index:5;
+text-align:center;
+padding:0 20px;
 }
 
 #loveText.show{
 opacity:1;
-transform:scale(1.2);
+transform:translate(-50%,-50%) scale(1.2);
 animation:glowPulse 2s infinite alternate;
 }
 
@@ -98,6 +101,17 @@ transform:translateY(-110vh) scale(1.5);
 opacity:0;
 }
 }
+  @media (max-width:600px){
+
+#countdown{
+font-size:80px;
+}
+
+#loveText{
+font-size:38px;
+}
+
+  }
 </style>
 
 </head>
