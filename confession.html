@@ -42,13 +42,38 @@ text-shadow:
 opacity:0;
 transform:scale(0.8);
 transition:2s;
+z-index:5;
 }
 
 #loveText.show{
 opacity:1;
 transform:scale(1.2);
 }
+.bg-heart{
+position:fixed;
+bottom:-40px;
+color:#ff4da6;
+font-size:22px;
+opacity:0.7;
+pointer-events:none;
+z-index:0;
+animation:floatHeart linear forwards;
+text-shadow:0 0 10px pink,0 0 20px #ff66cc;
+}
 
+@keyframes floatHeart{
+0%{
+transform:translateY(0) scale(0.6);
+opacity:0;
+}
+50%{
+opacity:1;
+}
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+}
 </style>
 
 </head>
@@ -58,7 +83,7 @@ transform:scale(1.2);
 <div id="countdown">3</div>
 
 <div id="loveText">
-I LOVE YOU SAKSHI
+<i>I LOVE YOU SAKSHI</i>
 </div>
 
 <audio id="loveAudio">
@@ -94,7 +119,26 @@ audio.play();
 
 },1000);
 
+  function createBgHeart(){
+
+const heart=document.createElement("div");
+heart.classList.add("bg-heart");
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(16+Math.random()*30)+"px";
+heart.style.animationDuration=(6+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},11000);
+
+  }
+
 </script>
+  
 
 </body>
 </html>
