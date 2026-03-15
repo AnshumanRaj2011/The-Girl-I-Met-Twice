@@ -709,6 +709,7 @@ document.getElementById("intro").style.display="none";
 music.play();
 
 }
+  const confession=document.getElementById("confession");
   
 function createHeart(){
 
@@ -746,7 +747,7 @@ btn.innerHTML="🎵 Play Music";
 
 }
 
-const confession=document.getElementById("confession");
+
 
 function heartExplosion(){
 
@@ -790,12 +791,11 @@ clearInterval(interval);
 
 let triggered=false;
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", function(){
 
-const position=confession.getBoundingClientRect().top;
-const screen=window.innerHeight;
+const rect = confession.getBoundingClientRect();
 
-if(position < screen-100){
+if(rect.top <= window.innerHeight && rect.bottom >= 0){
 
 confession.classList.add("show");
 
@@ -808,7 +808,6 @@ triggered=true;
 }
 
 });
-
   function createPetal(){
 
 const petal=document.createElement("div");
