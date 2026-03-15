@@ -272,6 +272,25 @@ color:#555;
 margin-top:20px;
 }
   
+.corner-heart{
+position:fixed;
+font-size:25px;
+color:#ff2e6e;
+pointer-events:none;
+z-index:9999;
+animation:heartBurst 3.5s linear forwards;
+}
+
+@keyframes heartBurst{
+0%{
+transform:scale(0.3);
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) scale(2);
+opacity:0;
+}
+}
   
 </style>
 
@@ -898,22 +917,46 @@ setTimeout(typeEffect,80);
 }
 
 typeEffect();
+/* hearts from every side */
 
-/* hearts filling screen */
-
-for(let i=0;i<150;i++){
+for(let i=0;i<200;i++){
 
 const heart=document.createElement("div");
 heart.innerHTML="❤";
+heart.classList.add("corner-heart");
 
-heart.style.position="fixed";
+/* random side */
+
+const side=Math.floor(Math.random()*5);
+
+if(side===0){
+heart.style.left="0px";
+heart.style.top=Math.random()*100+"vh";
+}
+else if(side===1){
+heart.style.right="0px";
+heart.style.top=Math.random()*100+"vh";
+}
+else if(side===2){
+heart.style.top="0px";
 heart.style.left=Math.random()*100+"vw";
-heart.style.bottom="-20px";
+}
+else if(side===3){
+heart.style.bottom="0px";
+heart.style.left=Math.random()*100+"vw";
+}
+else{
+heart.style.left="50vw";
+heart.style.top="50vh";
+}
+
 heart.style.fontSize=(20+Math.random()*30)+"px";
-heart.style.color="#ff2e6e";
-heart.style.animation="heartExplosion 4s linear forwards";
 
 document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},3500);
 
 }
 
