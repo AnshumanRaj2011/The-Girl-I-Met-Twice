@@ -840,25 +840,6 @@ clearInterval(interval);
 
 }
 
-let triggered=false;
-
-window.addEventListener("scroll", function(){
-
-const rect = confession.getBoundingClientRect();
-
-if(rect.top <= window.innerHeight && rect.bottom >= 0){
-
-confession.classList.add("show");
-
-if(!triggered){
-heartExplosion();
-increaseMusic();
-triggered=true;
-}
-
-}
-
-});
   function createPetal(){
 
 const petal=document.createElement("div");
