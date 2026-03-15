@@ -29,7 +29,8 @@ text-shadow:
 0 0 10px pink,
 0 0 20px #ff4da6,
 0 0 40px #ff80bf;
-}/* final text */
+}
+  /* final text */
 
 #loveText{
 position:absolute;
@@ -50,6 +51,12 @@ z-index:5;
 #loveText.show{
 opacity:1;
 transform:scale(1.2);
+animation:pulse 2s infinite alternate;
+}
+
+@keyframes pulse{
+from{transform:scale(1.15);}
+to{transform:scale(1.25);}
 }
   
 .bg-heart{
@@ -116,7 +123,8 @@ counter.style.display="none";
 
 love.classList.add("show");
 
-audio.play();
+audio.volume = 1;
+audio.play().catch(()=>{});
 
 setInterval(createBgHeart,400);
 
